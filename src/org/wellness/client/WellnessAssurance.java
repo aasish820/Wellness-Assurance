@@ -11,7 +11,7 @@ import org.wellness.daoimpl.SubcategoryDAOImpl;
 public class WellnessAssurance {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-//		AdminDAOImpl admindaoimpl = new AdminDAOImpl();
+		AdminDAOImpl admindaoimpl = new AdminDAOImpl();
 		CustomerDAOImpl customerdaoimpl = new CustomerDAOImpl();
 //		CategoryDAOImpl categorydaoimpl = new CategoryDAOImpl();
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
@@ -31,6 +31,27 @@ public class WellnessAssurance {
 			System.out.println();
 			switch(choice) {
 			case 1:
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.println("XX      1.Customer              XX");
+				System.out.println("XX      2.Admin                 XX");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.print("Enter your choice: ");
+				int login_choice = sc.nextInt();
+				System.out.println();
+				switch(login_choice) {
+				case 1:
+					System.out.println("");
+					break;
+				case 2:
+					System.out.println("Enter Your User Name");
+					String username = sc.nextLine();
+					System.out.println("Enter your password");
+					String password = sc.nextLine();
+					
+					break;
+				
+				}
+				
 				break;
 			case 2:
 				
@@ -48,6 +69,8 @@ public class WellnessAssurance {
 					break;
 					
 				case 2:
+					//Admin Register
+					admindaoimpl.registerAdmin();
 					break;
 				}
 				break;
