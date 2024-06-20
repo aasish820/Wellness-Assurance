@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import org.wellness.dao.AdminDAO;
 import org.wellness.model.Admin;
-import org.wellness.model.Customer;
 
 public class AdminDAOImpl implements AdminDAO {
 	Scanner sc = new Scanner(System.in);

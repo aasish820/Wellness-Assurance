@@ -51,6 +51,35 @@ public class WellnessAssurance {
 						boolean checkDetails = customerdaoimpl.customerLogin(customerUsername, customerPassword);
 						if (checkDetails == true) {
 							System.out.println("Customer Login Successful");
+							
+							// After customer logs in
+							 customer_loop: while(true) {
+								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+								System.out.println("XX      1.Apply For Policy      XX");
+								System.out.println("XX      2.Edit My Information   XX");
+								System.out.println("XX      3.View My Policy        XX");
+								System.out.println("XX      4.Logout                XX");
+								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+								System.out.print("Enter your choice: ");
+								int customer_choice = sc.nextInt();
+								sc.nextLine();
+								System.out.println();
+								
+								// Customer choices
+								switch(customer_choice) {
+								case 1:
+									break;
+								case 2:
+									break;
+								case 3:
+									break;
+									
+									// LOGOUT
+								case 4:
+									break customer_loop;
+										
+								}
+							}
 						} else {
 							System.out.println("Customer Login Failed. Please Try Again.");
 						}
