@@ -28,6 +28,7 @@ public class WellnessAssurance {
 		// Getting option from user
 		System.out.print("Enter your choice: ");
 		int choice = sc.nextInt();
+		sc.nextLine();
 		System.out.println();
 		switch (choice) {
 		case 1:
@@ -37,6 +38,7 @@ public class WellnessAssurance {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			System.out.print("Enter your choice: ");
 			int login_choice = sc.nextInt();
+			sc.nextLine();
 			System.out.println();
 			switch (login_choice) {
 			case 1:
@@ -71,6 +73,7 @@ public class WellnessAssurance {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			System.out.print("Enter your choice: ");
 			int reg_choice = sc.nextInt();
+			sc.nextLine();
 			System.out.println();
 			switch (reg_choice) {
 			case 1:
