@@ -14,33 +14,41 @@ public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
 	
 	System.out.println("Enter Customer ID: ");
-	String customer_id = sc.next();
+	String customer_id = sc.nextLine();
 	
 	System.out.println("Enter Fullname: ");
-	String fullName = sc.next();
+	String fullName = sc.nextLine();
 	
 	System.out.println("Enter Address: ");
-	String address = sc.next();
+	String address = sc.nextLine();
 	
 	System.out.println("Enter Age: ");
 	int age = sc.nextInt();
 	
 	System.out.println("Enter Phone Number: ");
-	String ph_num = sc.next();
+	String ph_num = sc.nextLine();
 	
 	System.out.println("Enter Username: ");
-	String username = sc.next();
+	String username = sc.nextLine();
 	
 	System.out.println("Enter Password: ");
-	String password = sc.next();
+	String password = sc.nextLine();
 	
 	System.out.println("Enter Email: ");
-	String email = sc.next();
+	String email = sc.nextLine();
 	
 	
 	Customer customer = new Customer(customer_id, fullName, address, age, ph_num, username, password, email);
 	
-	addCustomer.add(customer);
+	boolean result = addCustomer.add(customer);
+	
+	if (result == true) {
+		
+		System.out.println("New Customer Registered Successfully");
+	}else {
+		
+		System.out.println("Customer Registration Failed. Please Try Again");
+	}
 	
 	for(int i=0; i<addCustomer.size();i++) {
 		
