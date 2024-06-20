@@ -17,7 +17,7 @@ public class WellnessAssurance {
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
 //		PolicyDAOImpl policydaoimpl = new PolicyDAOImpl();
 
-//		while(true) {
+		while(true) {
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("XX      1.LOGIN                 XX");
 		System.out.println("XX      2.REGISTER              XX");
@@ -94,6 +94,6 @@ public class WellnessAssurance {
 		case 4:
 			System.exit(0);
 		}
-//		}
+		}
 	}
 }
