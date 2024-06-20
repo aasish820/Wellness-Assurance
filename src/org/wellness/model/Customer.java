@@ -13,7 +13,7 @@ public class Customer {
 	private int policy_id;
 
 	public Customer(String customer_id, String fullName, String address, int age, String ph_num, String username,
-			String password, String email, int policy_id) {
+			String password, String email) {
 		super();
 		this.customer_id = customer_id;
 		this.fullName = fullName;
@@ -23,7 +23,6 @@ public class Customer {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.policy_id = policy_id;
 
 	}
 	

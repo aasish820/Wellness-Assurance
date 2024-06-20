@@ -12,7 +12,7 @@ public class WellnessAssurance {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 //		AdminDAOImpl admindaoimpl = new AdminDAOImpl();
-//		CustomerDAOImpl customerdaoimpl = new CustomerDAOImpl();
+		CustomerDAOImpl customerdaoimpl = new CustomerDAOImpl();
 //		CategoryDAOImpl categorydaoimpl = new CategoryDAOImpl();
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
 //		PolicyDAOImpl policydaoimpl = new PolicyDAOImpl();
@@ -44,6 +44,7 @@ public class WellnessAssurance {
 				switch(reg_choice) {
 				case 1:
 					// Register Customer
+					customerdaoimpl.registerCustomer();
 					break;
 					
 				case 2:
