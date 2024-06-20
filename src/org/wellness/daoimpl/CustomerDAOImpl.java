@@ -7,11 +7,11 @@ import org.wellness.dao.CustomerDAO;
 import org.wellness.model.Customer;
 
 public class CustomerDAOImpl implements CustomerDAO {
+	Scanner sc = new Scanner(System.in);
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
 
 	@Override
 	public void registerCustomer() {
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Enter Customer ID: ");
 		String customer_id = sc.nextLine();
@@ -65,5 +65,20 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		return false;
 		
+	}
+	
+	@Override
+	public void CustomerPasswordReset(String username) {
+		for (int i = 0; i < addCustomer.size(); i++) {
+			Customer storedCustDetails = addCustomer.get(i);
+			if (storedCustDetails.getUsername().equals(username)) {
+				System.out.println("Enter new password: ");
+				String password = sc.nextLine();
+				storedCustDetails.setPassword(password);
+				System.out.println("Password Changed Successfully");
+				return;
+			}
+		}
+		System.out.println("Password could not be changed. Please try again!!");	
 	}
 }

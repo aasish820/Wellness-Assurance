@@ -42,27 +42,27 @@ public class WellnessAssurance {
 				System.out.println();
 
 				switch (login_choice) {
-				case 1:
-					System.out.println("Enter Your User Name: ");
-					String customerUsername = sc.nextLine();
+					case 1:
+						System.out.println("Enter Your User Name: ");
+						String customerUsername = sc.nextLine();
+	
+						System.out.println("Enter your password: ");
+						String customerPassword = sc.nextLine();
+						boolean checkDetails = customerdaoimpl.customerLogin(customerUsername, customerPassword);
+						if (checkDetails == true) {
+							System.out.println("Customer Login Successful");
+						} else {
+							System.out.println("Customer Login Failed. Please Try Again.");
+						}
+						break;
 
-					System.out.println("Enter your password: ");
-					String customerPassword = sc.nextLine();
-					boolean checkDetails = customerdaoimpl.customerLogin(customerUsername, customerPassword);
-					if (checkDetails == true) {
-						System.out.println("Customer Login Successful");
-					} else {
-						System.out.println("Customer Login Failed. Please Try Again.");
-					}
-					break;
-
-				case 2:
-					System.out.println("Enter Your User Name");
-					String username = sc.nextLine();
-					System.out.println("Enter your password");
-					String password = sc.nextLine();
-
-					break;
+					case 2:
+						System.out.println("Enter Your User Name");
+						String username = sc.nextLine();
+						System.out.println("Enter your password");
+						String password = sc.nextLine();
+	
+						break;
 
 				}
 
@@ -90,8 +90,34 @@ public class WellnessAssurance {
 					break;
 				}
 				break;
-
+				
+			// Forget Password
 			case 3:
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.println("XX      1.Customer              XX");
+				System.out.println("XX      2.Admin                 XX");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.print("Enter your choice: ");
+				int for_choice = sc.nextInt();
+				sc.nextLine();
+				System.out.println();
+				switch(for_choice) {
+					// customer forgot password
+					case 1:
+						System.out.println("Enter your username: ");
+						String for_cus_username = sc.nextLine();
+						customerdaoimpl.CustomerPasswordReset(for_cus_username);
+						break;
+						
+					// admin forgot password
+					case 2:
+						System.out.println("Enter your username: ");
+						String for_admin_username = sc.nextLine();
+						admindaoimpl.AdminPasswordReset(for_admin_username);
+						break;
+				}
+				
+				
 				break;
 
 			case 4:
