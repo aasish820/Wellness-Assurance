@@ -5,14 +5,15 @@ import java.util.Scanner;
 
 import org.wellness.dao.AdminDAO;
 import org.wellness.model.Admin;
+import org.wellness.model.Customer;
 
 public class AdminDAOImpl implements AdminDAO {
+
+	Scanner sc = new Scanner(System.in);
 	ArrayList<Admin> addAdmin = new ArrayList<Admin>();
 
 	@Override
 	public void registerAdmin() {
-		Scanner sc = new Scanner(System.in);
-
 		System.out.println("Enter Admin ID: ");
 		String admin_id = sc.nextLine();
 		System.out.println("Enter Admin Name: ");
@@ -50,4 +51,20 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		
 	
+
+	
+	@Override
+	public void AdminPasswordReset(String username) {
+		for (int i = 0; i < addAdmin.size(); i++) {
+			Admin storedAdminDetails = addAdmin.get(i);
+			if (storedAdminDetails.getUsername().equals(username)) {
+				System.out.println("Enter new password: ");
+				String password = sc.nextLine();
+				storedAdminDetails.setPassword(password);
+				System.out.println("Password Changed Successfully");
+				return;
+			}
+		}
+		System.out.println("Password could not be changed. Please try again!!");
+	}
 }

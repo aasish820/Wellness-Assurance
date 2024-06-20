@@ -16,20 +16,21 @@ public class WellnessAssurance {
 //		CategoryDAOImpl categorydaoimpl = new CategoryDAOImpl();
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
 //		PolicyDAOImpl policydaoimpl = new PolicyDAOImpl();
-		
-//		while(true) {
+
+		while (true) {
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			System.out.println("XX      1.LOGIN                 XX");
 			System.out.println("XX      2.REGISTER              XX");
 			System.out.println("XX      3.FORGOT PASSWORD       XX");
 			System.out.println("XX      4.EXIT                  XX");
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-			
+
 			// Getting option from user
 			System.out.print("Enter your choice: ");
 			int choice = sc.nextInt();
+			sc.nextLine();
 			System.out.println();
-			switch(choice) {
+			switch (choice) {
 			case 1:
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.println("XX      1.Customer              XX");
@@ -37,7 +38,9 @@ public class WellnessAssurance {
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.print("Enter your choice: ");
 				int login_choice = sc.nextInt();
+				sc.nextLine();
 				System.out.println();
+
 				switch(login_choice) {
 				case 1:
 					System.out.println("");
@@ -58,36 +61,64 @@ public class WellnessAssurance {
 					break;
 				
 				}
-				
+
 				break;
 			case 2:
-				
+
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.println("XX      1.Customer              XX");
 				System.out.println("XX      2.Admin                 XX");
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.print("Enter your choice: ");
 				int reg_choice = sc.nextInt();
+				sc.nextLine();
 				System.out.println();
-				switch(reg_choice) {
+
+				switch (reg_choice) {
 				case 1:
 					// Register Customer
 					customerdaoimpl.registerCustomer();
 					break;
-					
+
 				case 2:
-					//Admin Register
+					// Admin Register
 					admindaoimpl.registerAdmin();
 					break;
 				}
 				break;
 				
+			// Forget Password
 			case 3:
-				break;
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.println("XX      1.Customer              XX");
+				System.out.println("XX      2.Admin                 XX");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.print("Enter your choice: ");
+				int for_choice = sc.nextInt();
+				sc.nextLine();
+				System.out.println();
+				switch(for_choice) {
+					// customer forgot password
+					case 1:
+						System.out.println("Enter your username: ");
+						String for_cus_username = sc.nextLine();
+						customerdaoimpl.CustomerPasswordReset(for_cus_username);
+						break;
+						
+					// admin forgot password
+					case 2:
+						System.out.println("Enter your username: ");
+						String for_admin_username = sc.nextLine();
+						admindaoimpl.AdminPasswordReset(for_admin_username);
+						break;
+				}
 				
+				
+				break;
+
 			case 4:
 				System.exit(0);
 			}
-//		}
+		}
 	}
 }
