@@ -5,7 +5,7 @@ public class Category {
 	private String category_id;
 	private String inc_type;
 
-	private String getCategory_id() {
+	public String getCategory_id() {
 		return category_id;
 
 	}
