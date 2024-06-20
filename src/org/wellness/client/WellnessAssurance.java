@@ -90,8 +90,16 @@ public class WellnessAssurance {
 						String username = sc.nextLine();
 						System.out.println("Enter your password");
 						String password = sc.nextLine();
+						boolean admin_check = admindaoimpl.adminLogin(username, password);
+						if(admin_check==true) {
+							System.out.println("Admin login Scucessfully");
+						}
+						else {
+							System.out.println("login failed. please try again!!");
+						}
 	
 						break;
+
 
 				}
 

@@ -7,6 +7,7 @@ import org.wellness.dao.AdminDAO;
 import org.wellness.model.Admin;
 
 public class AdminDAOImpl implements AdminDAO {
+
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Admin> addAdmin = new ArrayList<Admin>();
 
@@ -18,7 +19,7 @@ public class AdminDAOImpl implements AdminDAO {
 		String name = sc.nextLine();
 		System.out.println("Enter address: ");
 		String address = sc.nextLine();
-		System.out.println("Enter oh_num: ");
+		System.out.println("Enter ph_num: ");
 		String ph_num = sc.nextLine();
 		System.out.println("Enter Username: ");
 		String username = sc.nextLine();
@@ -36,6 +37,20 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 
 	}
+
+	@Override
+	public boolean adminLogin(String username, String password) {
+		for(int i=0; i<addAdmin.size(); i++){
+            if (addAdmin.get(i).getUsername().equals(username) && addAdmin.get(i).getPassword().equals(password)) {
+                return true; // Username and password match
+            }
+        }
+        return false; // No match found
+    }
+		
+		
+	
+
 	
 	@Override
 	public void AdminPasswordReset(String username) {
