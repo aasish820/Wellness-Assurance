@@ -1,5 +1,6 @@
 package org.wellness.client;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.wellness.daoimpl.AdminDAOImpl;
@@ -7,13 +8,14 @@ import org.wellness.daoimpl.CategoryDAOImpl;
 import org.wellness.daoimpl.CustomerDAOImpl;
 import org.wellness.daoimpl.PolicyDAOImpl;
 import org.wellness.daoimpl.SubcategoryDAOImpl;
+import org.wellness.model.Category;
 
 public class WellnessAssurance {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		AdminDAOImpl admindaoimpl = new AdminDAOImpl();
 		CustomerDAOImpl customerdaoimpl = new CustomerDAOImpl();
-//		CategoryDAOImpl categorydaoimpl = new CategoryDAOImpl();
+		CategoryDAOImpl categorydaoimpl = new CategoryDAOImpl();
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
 //		PolicyDAOImpl policydaoimpl = new PolicyDAOImpl();
 
@@ -99,6 +101,55 @@ public class WellnessAssurance {
 						boolean admin_check = admindaoimpl.adminLogin(username, password);
 						if(admin_check==true) {
 							System.out.println("Admin login Scucessfully");
+							admin_loop: while(true) {
+								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+								System.out.println("XX      1.ADD Category          XX");
+								System.out.println("XX      2.Category Operations   XX");
+								System.out.println("XX      3.Customer Operations   XX");
+								System.out.println("XX      4.Pending Policy        XX");
+								System.out.println("XX      5.Logout                XX");
+								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+								System.out.print("Enter your choice: ");
+								int admin_choice = sc.nextInt();
+								sc.nextLine();
+								System.out.println();
+								
+								switch(admin_choice) {
+								case 1:
+									categorydaoimpl.addCategory();
+									break;
+								case 2:
+									// Category Operations 
+									ArrayList<Category> list_category = categorydaoimpl.getAllCategories();
+									if(list_category.size()<1) {
+										System.out.println("Category has not been added");
+									} else {
+										for (int i = 0; i < list_category.size(); i++) {
+											System.out.println((i+1)+")"+list_category.get(i));
+										}
+										System.out.println("Choose a category: ");
+										int category_option = sc.nextInt();
+										sc.nextLine();
+										
+										// View after category is choosen
+										System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+										System.out.println("XX      1.View Sub Category   XX");
+										System.out.println("XX      2.Edit Category       XX");
+										System.out.println("XX      3.Delete Category     XX");
+										System.out.println("XX      4.Logout              XX");
+										System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+										System.out.print("Enter your choice: ");
+										
+									}
+									break;
+								case 3:
+									break;
+								case 4:
+									break;
+								case 5:
+									break;
+								}
+							}
 						}
 						else {
 							System.out.println("login failed. please try again!!");
