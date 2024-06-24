@@ -36,30 +36,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 //			 ArrayList<Subcategory> list_sub_category = subcategorydaoimpl_obj.getSubCategoriesByCategoryID(category_obj.getCategory_id());
 			while(true) {
 				//Adding sub category
-				System.out.println("Enter sub category info for " + category_obj.getInc_type());
 				String sub_id = subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
 				System.out.println("Sub category Added Successfully");
 				
 				while(true) {
 					// Add Policy
-					System.out.println("Enter Policy ID");
-					String policy_id = sc.nextLine();
-					System.out.println("Enter Plan Type");
-					String plan_type = sc.nextLine();
-					System.out.println("Enter Monthly Premium: ");
-					Double monthly_premium = sc.nextDouble();
-					sc.nextLine();
-					System.out.println("Enter Coverage: ");
-					Double coverage = sc.nextDouble();
-					sc.nextLine();
-					System.out.println("Deductable: ");
-					Double deductable = sc.nextDouble();
-					sc.nextLine();
-					
 					PolicyDAOImpl policydaoimpl_obj = new PolicyDAOImpl();
-//					ArrayList<Policy> list_policy = policydaoimpl_obj.getPolicyBySubCategoryID(subcategorydaoimpl_obj.getSubCategoriesByCategoryID());
 					policydaoimpl_obj.addPolicy(sub_id);
-					
 					System.out.println("Policy Added Successfully");
 					System.out.println("Do you want to add more Policy? (y/n)");
 					String policy_option = sc.nextLine();

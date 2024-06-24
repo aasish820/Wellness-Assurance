@@ -116,7 +116,8 @@ public class WellnessAssurance {
 								
 								switch(admin_choice) {
 								case 1:
-									categorydaoimpl.addCategory();
+										categorydaoimpl.addCategory();
+									
 									break;
 								case 2:
 									// Category Operations 
