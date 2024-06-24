@@ -19,7 +19,6 @@ public class WellnessAssurance {
 //		SubcategoryDAOImpl subcategorydaoimpl = new SubcategoryDAOImpl();
 //		PolicyDAOImpl policydaoimpl = new PolicyDAOImpl();
 
-
 		while (true) {
 			// Starting view
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -28,7 +27,6 @@ public class WellnessAssurance {
 			System.out.println("XX      3.FORGOT PASSWORD       XX");
 			System.out.println("XX      4.EXIT                  XX");
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
 
 			// Getting option from user
 			System.out.print("Enter your choice: ");
@@ -48,115 +46,113 @@ public class WellnessAssurance {
 				System.out.println();
 
 				switch (login_choice) {
-					case 1:
-						// Customer Login
-						System.out.println("Enter Your User Name: ");
-						String customerUsername = sc.nextLine();
-	
-						System.out.println("Enter your password: ");
-						String customerPassword = sc.nextLine();
-						boolean checkDetails = customerdaoimpl.customerLogin(customerUsername, customerPassword);
-						if (checkDetails == true) {
-							System.out.println("Customer Login Successful");
-							
-							// After customer logs in
-							 customer_loop: while(true) {
-								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-								System.out.println("XX      1.Apply For Policy      XX");
-								System.out.println("XX      2.Edit My Information   XX");
-								System.out.println("XX      3.View My Policy        XX");
-								System.out.println("XX      4.Logout                XX");
-								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-								System.out.print("Enter your choice: ");
-								int customer_choice = sc.nextInt();
-								sc.nextLine();
-								System.out.println();
-								
-								// Customer choices
-								switch(customer_choice) {
-								case 1:
-									break;
-								case 2:
-									break;
-								case 3:
-									break;
-									
-									// LOGOUT
-								case 4:
-									break customer_loop;
-										
-								}
-							}
-						} else {
-							System.out.println("Customer Login Failed. Please Try Again.");
-						}
-						break;
+				case 1:
+					// Customer Login
+					System.out.println("Enter Your User Name: ");
+					String customerUsername = sc.nextLine();
 
-					case 2:
-						// Admin Login
-						System.out.println("Enter Your User Name");
-						String username = sc.nextLine();
-						System.out.println("Enter your password");
-						String password = sc.nextLine();
-						boolean admin_check = admindaoimpl.adminLogin(username, password);
-						if(admin_check==true) {
-							System.out.println("Admin login Scucessfully");
-							admin_loop: while(true) {
-								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-								System.out.println("XX      1.ADD Category          XX");
-								System.out.println("XX      2.Category Operations   XX");
-								System.out.println("XX      3.Customer Operations   XX");
-								System.out.println("XX      4.Pending Policy        XX");
-								System.out.println("XX      5.Logout                XX");
-								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-								System.out.print("Enter your choice: ");
-								int admin_choice = sc.nextInt();
-								sc.nextLine();
-								System.out.println();
-								
-								switch(admin_choice) {
-								case 1:
-									categorydaoimpl.addCategory();
-									break;
-								case 2:
-									// Category Operations 
-									ArrayList<Category> list_category = categorydaoimpl.getAllCategories();
-									if(list_category.size()<1) {
-										System.out.println("Category has not been added");
-									} else {
-										for (int i = 0; i < list_category.size(); i++) {
-											System.out.println((i+1)+")"+list_category.get(i));
-										}
-										System.out.println("Choose a category: ");
-										int category_option = sc.nextInt();
-										sc.nextLine();
-										
-										// View after category is choosen
-										System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-										System.out.println("XX      1.View Sub Category   XX");
-										System.out.println("XX      2.Edit Category       XX");
-										System.out.println("XX      3.Delete Category     XX");
-										System.out.println("XX      4.Logout              XX");
-										System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-										System.out.print("Enter your choice: ");
-										
+					System.out.println("Enter your password: ");
+					String customerPassword = sc.nextLine();
+					boolean checkDetails = customerdaoimpl.customerLogin(customerUsername, customerPassword);
+					if (checkDetails == true) {
+						System.out.println("Customer Login Successful");
+
+						// After customer logs in
+						customer_loop: while (true) {
+							System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+							System.out.println("XX      1.Apply For Policy      XX");
+							System.out.println("XX      2.Edit My Information   XX");
+							System.out.println("XX      3.View My Policy        XX");
+							System.out.println("XX      4.Logout                XX");
+							System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+							System.out.print("Enter your choice: ");
+							int customer_choice = sc.nextInt();
+							sc.nextLine();
+							System.out.println();
+
+							// Customer choices
+							switch (customer_choice) {
+							case 1:
+								break;
+							case 2:
+								break;
+							case 3:
+								break;
+
+							// LOGOUT
+							case 4:
+								break customer_loop;
+
+							}
+						}
+					} else {
+						System.out.println("Customer Login Failed. Please Try Again.");
+					}
+					break;
+
+				case 2:
+					// Admin Login
+					System.out.println("Enter Your User Name");
+					String username = sc.nextLine();
+					System.out.println("Enter your password");
+					String password = sc.nextLine();
+					boolean admin_check = admindaoimpl.adminLogin(username, password);
+					if (admin_check == true) {
+						System.out.println("Admin login Scucessfully");
+						admin_loop: while (true) {
+							System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+							System.out.println("XX      1.ADD Category          XX");
+							System.out.println("XX      2.Category Operations   XX");
+							System.out.println("XX      3.Customer Operations   XX");
+							System.out.println("XX      4.Pending Policy        XX");
+							System.out.println("XX      5.Logout                XX");
+							System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+							System.out.print("Enter your choice: ");
+							int admin_choice = sc.nextInt();
+							sc.nextLine();
+							System.out.println();
+
+							switch (admin_choice) {
+							case 1:
+								categorydaoimpl.addCategory();
+								break;
+							case 2:
+								// Category Operations
+								ArrayList<Category> list_category = categorydaoimpl.getAllCategories();
+								if (list_category.size() < 1) {
+									System.out.println("Category has not been added");
+								} else {
+									for (int i = 0; i < list_category.size(); i++) {
+										System.out.println((i + 1) + ")" + list_category.get(i));
 									}
-									break;
-								case 3:
-									break;
-								case 4:
-									break;
-								case 5:
-									break;
+									System.out.println("Choose a category: ");
+									int category_option = sc.nextInt();
+									sc.nextLine();
+
+									// View after category is choosen
+									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+									System.out.println("XX      1.View Sub Category   XX");
+									System.out.println("XX      2.Edit Category       XX");
+									System.out.println("XX      3.Delete Category     XX");
+									System.out.println("XX      4.Logout              XX");
+									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+									System.out.print("Enter your choice: ");
+
 								}
+								break;
+							case 3:
+								break;
+							case 4:
+								break;
+							case 5:
+								break;
 							}
 						}
-						else {
-							System.out.println("login failed. please try again!!");
-						}
-	
-						break;
+					} else {
+						System.out.println("login failed. please try again!!");
+					}
 
+					break;
 
 				}
 
@@ -184,7 +180,7 @@ public class WellnessAssurance {
 					break;
 				}
 				break;
-				
+
 			// Forget Password
 			case 3:
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -195,23 +191,22 @@ public class WellnessAssurance {
 				int for_choice = sc.nextInt();
 				sc.nextLine();
 				System.out.println();
-				switch(for_choice) {
-					// customer forgot password
-					case 1:
-						System.out.println("Enter your username: ");
-						String for_cus_username = sc.nextLine();
-						customerdaoimpl.CustomerPasswordReset(for_cus_username);
-						break;
-						
-					// admin forgot password
-					case 2:
-						System.out.println("Enter your username: ");
-						String for_admin_username = sc.nextLine();
-						admindaoimpl.AdminPasswordReset(for_admin_username);
-						break;
+				switch (for_choice) {
+				// customer forgot password
+				case 1:
+					System.out.println("Enter your username: ");
+					String for_cus_username = sc.nextLine();
+					customerdaoimpl.CustomerPasswordReset(for_cus_username);
+					break;
+
+				// admin forgot password
+				case 2:
+					System.out.println("Enter your username: ");
+					String for_admin_username = sc.nextLine();
+					admindaoimpl.AdminPasswordReset(for_admin_username);
+					break;
 				}
-				
-				
+
 				break;
 
 			case 4:
