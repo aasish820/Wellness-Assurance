@@ -1,15 +1,16 @@
 package org.wellness.client;
- 
+
 import java.util.ArrayList;
 import java.util.Scanner;
- 
+
 import org.wellness.daoimpl.AdminDAOImpl;
 import org.wellness.daoimpl.CategoryDAOImpl;
 import org.wellness.daoimpl.CustomerDAOImpl;
 import org.wellness.daoimpl.PolicyDAOImpl;
 import org.wellness.daoimpl.SubcategoryDAOImpl;
 import org.wellness.model.Category;
- 
+import org.wellness.model.Customer;
+
 public class WellnessAssurance {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -135,6 +136,37 @@ public class WellnessAssurance {
 									}
 									break;
 								case 3:
+									//Cutomer Operations
+									ArrayList<Customer> list_customer = customerdaoimpl.getAllCustomer();
+									// View after Cutomer Operations is choosen
+									
+									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+									System.out.println("XX      1.View Customer		    XX");
+									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+									System.out.println("Enter your choice: ");
+									
+									int view_customer = sc.nextInt();
+									sc.nextLine();
+									System.out.println();
+									// Customer choices
+									switch(view_customer) {
+									case 1:
+									if(list_customer.size()<1) {
+										System.out.println("No customer has registered!");
+									} else {
+										System.out.println("List of all registered customer: ");
+										
+										System.out.println("Name" + "\t" + "Address" + "\t" + "Age" + "\t" + "Phone Number" + "\t" + "Email");
+										for (int i = 0; i < list_customer.size(); i++) {
+											System.out.println(list_customer.get(i).getFullName() + "\t" + list_customer.get(i).getAddress() + "\t" + list_customer.get(i).getAge() + "\t" + list_customer.get(i).getPh_num() + "\t" + list_customer.get(i).getEmail());
+		
+										}
+											
+									
+									}
+									
+									}
+								
 									break;
 								case 4:
 									break;

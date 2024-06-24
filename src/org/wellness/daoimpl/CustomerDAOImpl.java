@@ -10,6 +10,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
 
+	public ArrayList<Customer> getAllCustomer() {
+		return addCustomer;
+	}
+	
 	@Override
 	public void registerCustomer() {
 
@@ -81,4 +85,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		System.out.println("Password could not be changed. Please try again!!");	
 	}
+
+	
 }
