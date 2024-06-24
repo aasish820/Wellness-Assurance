@@ -6,4 +6,6 @@ import org.wellness.model.Subcategory;
 
 public interface SubcategoryDAO {
 	ArrayList<Subcategory> getSubCategoriesByID();
+
+	void addSubcategory();
 }

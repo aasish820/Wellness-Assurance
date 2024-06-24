@@ -2,6 +2,8 @@ package org.wellness.model;
 
 public class Subcategory {
 	private String sub_catogory_id;
+	private String Catogory_id;
+	private String sub_Catogory_type;
 
 	public String getSub_catogory_id() {
 		return sub_catogory_id;
@@ -26,9 +28,6 @@ public class Subcategory {
 	public void setSub_Catogory_type(String sub_Catogory_type) {
 		this.sub_Catogory_type = sub_Catogory_type;
 	}
-
-	private String Catogory_id;
-	private String sub_Catogory_type;
 
 	public Subcategory(String sub_catogory_id, String catogory_id, String sub_Catogory_type) {
 		super();
