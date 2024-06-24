@@ -38,12 +38,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 				System.out.println("Sub category Added Successfully");
 				System.out.println("Do you want to add more sub-categories? (y/n)");
 				String option = sc.nextLine();
-				if(option.toLowerCase() == "n") break;
+				if(option.toLowerCase().equals("n")) break;
 			}
 			System.out.println("Category Added Successfully");
 			System.out.println("Do you want to add more Categories? (y/n)");
 			String cat_option = sc.nextLine();
-			if(cat_option.toLowerCase() == "n") break;
+			if(cat_option.toLowerCase().equals("n")) break;
 		}
 		
 		
@@ -53,7 +53,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		for(int i = 0; i < list_category.size(); i++) {
 			System.out.println(list_category.get(i).getInc_type());
 		}
-		// emd test case
+		// end test case
 		
 	}
 
