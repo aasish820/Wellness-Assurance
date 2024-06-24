@@ -19,6 +19,7 @@ public class WellnessAssurance {
 
 
 		while (true) {
+			// Starting view
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			System.out.println("XX      1.LOGIN                 XX");
 			System.out.println("XX      2.REGISTER              XX");
@@ -34,6 +35,7 @@ public class WellnessAssurance {
 			System.out.println();
 			switch (choice) {
 			case 1:
+				// Login View
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.println("XX      1.Customer              XX");
 				System.out.println("XX      2.Admin                 XX");
@@ -45,6 +47,7 @@ public class WellnessAssurance {
 
 				switch (login_choice) {
 					case 1:
+						// Customer Login
 						System.out.println("Enter Your User Name: ");
 						String customerUsername = sc.nextLine();
 	
@@ -88,6 +91,7 @@ public class WellnessAssurance {
 						break;
 
 					case 2:
+						// Admin Login
 						System.out.println("Enter Your User Name");
 						String username = sc.nextLine();
 						System.out.println("Enter your password");
@@ -107,7 +111,7 @@ public class WellnessAssurance {
 
 				break;
 			case 2:
-
+				// Register view
 				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.println("XX      1.Customer              XX");
 				System.out.println("XX      2.Admin                 XX");
