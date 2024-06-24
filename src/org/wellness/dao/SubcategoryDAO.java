@@ -7,5 +7,5 @@ import org.wellness.model.Subcategory;
 public interface SubcategoryDAO {
 	ArrayList<Subcategory> getSubCategoriesByCategoryID(String category_id);
 
-	void addSubcategory(String category_id);
+	String addSubcategory(String category_id);
 }

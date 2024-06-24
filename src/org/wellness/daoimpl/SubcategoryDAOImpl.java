@@ -16,7 +16,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 	}
 	
 	@Override
-	public void addSubcategory(String category_id) {
+	public String addSubcategory(String category_id) {
 		
 		System.out.println("Enter Subcategory ID");
 		String sub_catogory_id = sc.nextLine();
@@ -26,7 +26,8 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 		Subcategory subcategory_obj = new Subcategory(sub_catogory_id, category_id, sub_Catogory_type); 
 		subcategory.add(subcategory_obj);
-		
+		String sub_id = subcategory_obj.getSub_catogory_id();
+		return sub_id;
 		
 	}
 

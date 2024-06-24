@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import org.wellness.dao.CategoryDAO;
 import org.wellness.model.Category;
+import org.wellness.model.Policy;
 import org.wellness.model.Subcategory;
 
 public class CategoryDAOImpl implements CategoryDAO {
@@ -28,32 +29,62 @@ public class CategoryDAOImpl implements CategoryDAO {
 			
 			Category category_obj = new Category(category_id, category_type);
 			category.add(category_obj);
+			System.out.println("Category Added Successfully");
 			
 			// Getting all the subcategories based on category
 			SubcategoryDAOImpl subcategorydaoimpl_obj = new SubcategoryDAOImpl();
-			ArrayList<Subcategory> list_sub_category = subcategorydaoimpl_obj.getSubCategoriesByCategoryID(category_obj.getCategory_id());
+//			 ArrayList<Subcategory> list_sub_category = subcategorydaoimpl_obj.getSubCategoriesByCategoryID(category_obj.getCategory_id());
 			while(true) {
+				//Adding sub category
 				System.out.println("Enter sub category info for " + category_obj.getInc_type());
-				subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
+				String sub_id = subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
 				System.out.println("Sub category Added Successfully");
-				System.out.println("Do you want to add more sub-categories? (y/n)");
-				String option = sc.nextLine();
-				if(option.toLowerCase().equals("n")) break;
+				
+				while(true) {
+					// Add Policy
+					System.out.println("Enter Policy ID");
+					String policy_id = sc.nextLine();
+					System.out.println("Enter Plan Type");
+					String plan_type = sc.nextLine();
+					System.out.println("Enter Monthly Premium: ");
+					Double monthly_premium = sc.nextDouble();
+					sc.nextLine();
+					System.out.println("Enter Coverage: ");
+					Double coverage = sc.nextDouble();
+					sc.nextLine();
+					System.out.println("Deductable: ");
+					Double deductable = sc.nextDouble();
+					sc.nextLine();
+					
+					PolicyDAOImpl policydaoimpl_obj = new PolicyDAOImpl();
+//					ArrayList<Policy> list_policy = policydaoimpl_obj.getPolicyBySubCategoryID(subcategorydaoimpl_obj.getSubCategoriesByCategoryID());
+					policydaoimpl_obj.addPolicy(sub_id);
+					
+					System.out.println("Policy Added Successfully");
+					System.out.println("Do you want to add more Policy? (y/n)");
+					String policy_option = sc.nextLine();
+					if(policy_option.toLowerCase().equals("n")) break;
+				}
+				
+				System.out.println("Do you want to add more Sub categories? (y/n)");
+				String sub_option = sc.nextLine();
+				if(sub_option.toLowerCase().equals("n")) break;
 			}
-			System.out.println("Category Added Successfully");
+			
 			System.out.println("Do you want to add more Categories? (y/n)");
 			String cat_option = sc.nextLine();
 			if(cat_option.toLowerCase().equals("n")) break;
 		}
-		
-		
-		//test case to see all the added categories
-		ArrayList<Category> list_category = this.getAllCategories();
-		
-		for(int i = 0; i < list_category.size(); i++) {
-			System.out.println(list_category.get(i).getInc_type());
-		}
-		// end test case
+				
+//				while(true) {
+//					System.out.println("Enter sub category info for " + category_obj.getInc_type());
+//					subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
+//					System.out.println("Sub category Added Successfully");
+//				}
+				
+//			}
+			
+			
 		
 	}
 
