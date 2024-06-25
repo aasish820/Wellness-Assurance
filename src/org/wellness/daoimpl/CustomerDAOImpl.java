@@ -156,7 +156,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			case 2:
 				System.out.println("Enter new address: ");
 				String address = sc.nextLine();
-				customer.setFullName(address);
+				customer.setAddress(address);
 				System.out.println("Address has been updated");
 				break;
 			case 3:
