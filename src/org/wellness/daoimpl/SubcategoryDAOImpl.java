@@ -48,7 +48,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		boolean flag = false;
 		for(Subcategory sub_category_list: subcategory) {
 			if(sub_category_list.getSub_catogory_id() == sub_category_id) {
-				sub_category_list.setSub_catogory_id(sub_category_type);;
+				sub_category_list.setSub_Catogory_type(sub_category_type);;
 				flag = true;
 			}
 		}

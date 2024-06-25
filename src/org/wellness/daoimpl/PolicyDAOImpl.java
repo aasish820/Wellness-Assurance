@@ -71,8 +71,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 				flag = true;
 			}
 		}
-		if(flag == true) System.out.println("Policy deleted Successfully");
-		else System.out.println("Policy could not be deleted");
+		if(flag == true) System.out.println("Policy updated Successfully");
+		else System.out.println("Policy could not be updated");
 	}
 	
 	@Override
