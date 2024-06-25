@@ -5,15 +5,17 @@ import java.util.Scanner;
 
 import org.wellness.dao.CustomerDAO;
 import org.wellness.model.Customer;
+import org.wellness.model.Policy;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
 
+	@Override
 	public ArrayList<Customer> getAllCustomer() {
 		return addCustomer;
 	}
-	
+
 	@Override
 	public void registerCustomer() {
 
@@ -58,19 +60,19 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public boolean customerLogin(String username, String password) {
-		for(int i=0; i < addCustomer.size(); i++) {
-			
+		for (int i = 0; i < addCustomer.size(); i++) {
+
 			Customer storedCustDetails = addCustomer.get(i);
-			
-			if(storedCustDetails.getUsername().equals(username)&&storedCustDetails.getPassword().equals(password)) {
+
+			if (storedCustDetails.getUsername().equals(username) && storedCustDetails.getPassword().equals(password)) {
 				return true;
 			}
-			
+
 		}
 		return false;
-		
+
 	}
-	
+
 	@Override
 	public void CustomerPasswordReset(String username) {
 		for (int i = 0; i < addCustomer.size(); i++) {
@@ -83,8 +85,108 @@ public class CustomerDAOImpl implements CustomerDAO {
 				return;
 			}
 		}
-		System.out.println("Password could not be changed. Please try again!!");	
+		System.out.println("Password could not be changed. Please try again!!");
+	}
+
+	public ArrayList<Customer> getPendingList() {
+		// TODO Auto-generated method stub
+		ArrayList<Customer> pendinglist = new ArrayList<Customer>();
+		for (int i = 0; i < addCustomer.size(); i++) {
+			Customer storedCustDetails = addCustomer.get(i);
+			if (storedCustDetails.isApplied() == true && storedCustDetails.isAccepted() == false) {
+				pendinglist.add(addCustomer.get(i));
+			}
+		}
+		return pendinglist;
+	}
+
+	@Override
+	public void acceptApplication(Customer customer) {
+		customer.setAccepted(true);
+		System.out.println("Application has been accepted");
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void applyPolicy(Policy policy, Customer customer) {
+		customer.setApplied(true);
+		customer.setPolicy_id(policy.getPolicy_id());
+		System.out.println("Application has been submitted");
+	}
+
+	@Override
+	public Customer getCustomerByCredentials(String customerUsername, String customerPassword) {
+
+		for (int i = 0; i < addCustomer.size(); i++) {
+
+			Customer storedCustDetails = addCustomer.get(i);
+
+			if (storedCustDetails.getUsername().equals(customerUsername)
+					&& storedCustDetails.getPassword().equals(customerPassword)) {
+				return storedCustDetails;
+			}
+
+		}
+		return null;
+
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		updateloop: while (true) {
+			System.out.println("What do you want to edit?");
+			System.out.println("1. Name");
+			System.out.println("2. Address");
+			System.out.println("3. Age");
+			System.out.println("4. Phone Number");
+			System.out.println("5. Email");
+			System.out.println("6. Cancel");
+			System.out.println();
+			System.out.println("Choose an option: ");
+			int option = sc.nextInt();
+			sc.nextLine();
+			switch (option) {
+			case 1:
+				System.out.println("Enter new name: ");
+				String name = sc.nextLine();
+				customer.setFullName(name);
+				System.out.println("Name has been updated");
+				break;
+			case 2:
+				System.out.println("Enter new address: ");
+				String address = sc.nextLine();
+				customer.setFullName(address);
+				System.out.println("Address has been updated");
+				break;
+			case 3:
+				System.out.println("Enter new age: ");
+				int age = sc.nextInt();
+				sc.nextLine();
+				customer.setAge(age);
+				System.out.println("Name has been updated");
+				break;
+			case 4:
+				System.out.println("Enter new phone number: ");
+				String phone = sc.nextLine();
+				customer.setPh_num(phone);
+				System.out.println("Phone has been updated");
+				break;
+			case 5:
+				System.out.println("Enter new email: ");
+				String email = sc.nextLine();
+				customer.setFullName(email);
+				System.out.println("Email has been updated");
+				break;
+			case 6:
+				break updateloop;
+			default:
+				System.out.println("Invalid option");
+				break;
+			}
+		}		
 	}
 
 	
+
 }

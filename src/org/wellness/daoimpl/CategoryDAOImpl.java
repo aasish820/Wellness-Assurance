@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 import org.wellness.dao.CategoryDAO;
 import org.wellness.model.Category;
-import org.wellness.model.Policy;
-import org.wellness.model.Subcategory;
 
 public class CategoryDAOImpl implements CategoryDAO {
 	
@@ -21,7 +19,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public void addCategory() {
 		// TODO Auto-generated method stub
-		while(true) {
 			System.out.println("Enter Category ID");
 			String category_id = sc.nextLine();
 			System.out.println("Enter Category Type");
@@ -29,46 +26,49 @@ public class CategoryDAOImpl implements CategoryDAO {
 			
 			Category category_obj = new Category(category_id, category_type);
 			category.add(category_obj);
-			System.out.println("Category Added Successfully");
-			
-			// Getting all the subcategories based on category
-			SubcategoryDAOImpl subcategorydaoimpl_obj = new SubcategoryDAOImpl();
-//			 ArrayList<Subcategory> list_sub_category = subcategorydaoimpl_obj.getSubCategoriesByCategoryID(category_obj.getCategory_id());
-			while(true) {
-				//Adding sub category
-				String sub_id = subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
-				System.out.println("Sub category Added Successfully");
-				
-				while(true) {
-					// Add Policy
-					PolicyDAOImpl policydaoimpl_obj = new PolicyDAOImpl();
-					policydaoimpl_obj.addPolicy(sub_id);
-					System.out.println("Policy Added Successfully");
-					System.out.println("Do you want to add more Policy? (y/n)");
-					String policy_option = sc.nextLine();
-					if(policy_option.toLowerCase().equals("n")) break;
-				}
-				
-				System.out.println("Do you want to add more Sub categories? (y/n)");
-				String sub_option = sc.nextLine();
-				if(sub_option.toLowerCase().equals("n")) break;
-			}
-			
-			System.out.println("Do you want to add more Categories? (y/n)");
-			String cat_option = sc.nextLine();
-			if(cat_option.toLowerCase().equals("n")) break;
-		}
-				
-//				while(true) {
-//					System.out.println("Enter sub category info for " + category_obj.getInc_type());
-//					subcategorydaoimpl_obj.addSubcategory(category_obj.getCategory_id());
-//					System.out.println("Sub category Added Successfully");
-//				}
-				
-//			}
-			
-			
+			System.out.println("Category Added Successfully");	
 		
+	}
+	
+	@Override
+	public void updateCategory(String category_id) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter new Category Type: ");
+		String category_type = sc.nextLine();
+		boolean flag = false;
+		for(Category category_list: category) {
+			if(category_list.getCategory_id() == category_id) {
+				category_list.setInc_type(category_type);
+				flag = true;
+			}
+		}
+		if(flag == true) System.out.println("Category updated Successfully");
+		else System.out.println("Category could not be updated");
+	}
+
+	@Override
+	public void deleteCategory(String category_id) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		for(Category category_list: category) {
+			if(category_list.getCategory_id() == category_id) {
+				category.remove(category_list);
+				flag = true;
+			}
+		}
+		if(flag == true) System.out.println("Category deleted Successfully");
+		else System.out.println("Category could not be deleted");
+	}
+	
+	@Override
+	public Category getCategoriesByID(String category_id) {
+		// TODO Auto-generated method stub
+		for(Category category_list: category) {
+			if(category_list.getCategory_id() == category_id) {
+				return category_list;
+			}
+		}
+		return null;
 	}
 
 }

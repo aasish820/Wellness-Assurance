@@ -10,7 +10,9 @@ public class Customer {
 	private String username;
 	private String password;
 	private String email;
-	private int policy_id;
+	private String policy_id;
+	private boolean applied;
+	private boolean accepted;
 
 	public Customer(String customer_id, String fullName, String address, int age, String ph_num, String username,
 			String password, String email) {
@@ -26,6 +28,22 @@ public class Customer {
 
 	}
 	
+	public boolean isApplied() {
+		return applied;
+	}
+
+	public void setApplied(boolean applied) {
+		this.applied = applied;
+	}
+
+	public boolean isAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
+	}
+
 	public Customer() {
 		super();
 	}
@@ -94,12 +112,13 @@ public class Customer {
 		this.email = email;
 	}
 
-	public int getPolicy_id() {
+	public String getPolicy_id() {
 		return policy_id;
 	}
 
-	public void setPolicy_id(int policy_id) {
+	public void setPolicy_id(String policy_id) {
 		this.policy_id = policy_id;
 	}
+	
 
 }
