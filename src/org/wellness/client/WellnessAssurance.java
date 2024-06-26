@@ -256,10 +256,10 @@ public class WellnessAssurance {
 
 									// View after category is choosen
 									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-									System.out.println("XX      1.View Sub Category   XX");
-									System.out.println("XX      2.Edit Category       XX");
-									System.out.println("XX      3.Delete Category     XX");
-									System.out.println("XX      4.Logout              XX");
+									System.out.println("XX      1.View Sub Category     XX");
+									System.out.println("XX      2.Edit Category         XX");
+									System.out.println("XX      3.Delete Category       XX");
+									System.out.println("XX      4.Logout                XX");
 									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 									System.out.print("Enter your choice: ");
@@ -409,8 +409,8 @@ public class WellnessAssurance {
 								// View after Cutomer Operations is choosen
 
 								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-								System.out.println("XX      1.View Customer		    XX");
-								System.out.println("XX      2.Logout		        XX");
+								System.out.println("XX      1.View Customer         XX");
+								System.out.println("XX      2.Logout                XX");
 								System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 								System.out.println("Enter your choice: ");
 

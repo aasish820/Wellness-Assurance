@@ -34,7 +34,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		System.out.println("Enter Phone Number: ");
 		String ph_num = sc.nextLine();
-		sc.nextLine();
+		
 		System.out.println("Enter Username: ");
 		String username = sc.nextLine();
 
