@@ -164,6 +164,29 @@ public class WellnessAssurance {
 											+ "Accepted: " + accepted);
 
 								}
+								
+								System.out.println();
+								System.out.println("1. Cancel Policy");
+								System.out.println("2. Back to Dashboard");
+								System.out.println();
+								System.out.println("Enter your choice: ");
+								int cust_policy_choice = sc.nextInt();
+								sc.nextLine();
+								
+								switch (cust_policy_choice) {
+									case 1:
+										// Cancel policy application
+										customerdaoimpl.cancelRequest(customer);
+										break;
+										
+									case 2:
+										// Go back to dashboard
+										break;
+										
+									default:
+										System.out.println("Invalid option");
+										break;
+								}
 								break;
 
 							// LOGOUT
@@ -195,7 +218,8 @@ public class WellnessAssurance {
 							System.out.println("XX      2.Category Operations   XX");
 							System.out.println("XX      3.Customer Operations   XX");
 							System.out.println("XX      4.Pending Policy        XX");
-							System.out.println("XX      5.Logout                XX");
+							System.out.println("XX      5.Policy Cancel Request XX");
+							System.out.println("XX      6.Logout                XX");
 							System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 							System.out.print("Enter your choice: ");
 							int admin_choice = sc.nextInt();
@@ -381,8 +405,12 @@ public class WellnessAssurance {
 												 policydaoimpl.addPolicy(category_id);
 												// Add Policy
 												break;
-												
+											
 											case 5:
+												// Cancel policy requests
+												break;
+												
+											case 6:
 												break admin_loop;
 
 											default:
@@ -404,6 +432,7 @@ public class WellnessAssurance {
 									
 									// Add Subcategory
 									case 4:
+										subcategorydaoimpl.addSubcategory(category_id);
 										break;
 
 									// LOGOUT
@@ -530,13 +559,58 @@ public class WellnessAssurance {
 										System.out.println("Invalid option");
 									} else {
 										int index = pending_option - 1;
-										customerdaoimpl.acceptApplication(pending_application.get(index));
+										admindaoimpl.acceptApplication(pending_application.get(index));
 									}
 								} else {
 									System.out.println("No pending applications");
 								}
 								break;
 							case 5:
+								//Cancel policy requests
+								ArrayList<Customer> cancel_application = customerdaoimpl.getCancelRequests();
+								if (cancel_application.size() > 0) {
+									for (int i = 0; i < cancel_application.size(); i++) {
+										System.out.println(
+												(i + 1) + ")\t" + "Name: " + cancel_application.get(i).getFullName()
+														+ "\t" + "Address: " + cancel_application.get(i).getAddress()
+														+ "\t" + "Age: " + cancel_application.get(i).getAge() + "\t"
+														+ "Phone number: " + cancel_application.get(i).getPh_num()
+														+ "\t" + "Email: " + cancel_application.get(i).getEmail());
+										String cust_policy_id = cancel_application.get(i).getPolicy_id();
+
+										Policy cust_policy = policydaoimpl.getPolicyByID(cust_policy_id);
+
+										Subcategory cust_subcategory = subcategorydaoimpl
+												.getSubCategoriesByID(cust_policy.getSub_category_id());
+
+										Category cust_category = categorydaoimpl
+												.getCategoriesByID(cust_subcategory.getCatogory_id());
+										System.out.println("-------Policy Details------");
+
+										System.out.println("Category: " + cust_category.getInc_type() + "\t"
+												+ "Sub Category: " + cust_subcategory.getSub_Catogory_type() + "\t"
+												+ "Policy: " + cust_policy.getPlan_type() + "\t" + "Monthly Premium: "
+												+ cust_policy.getMonthly_premium() + "\t" + "Coverage: "
+												+ cust_policy.getCoverage() + "\t" + "Deductable: "
+												+ cust_policy.getDeductable());
+									}
+
+									System.out.println("Choose an option to cancel application: ");
+									int pending_option = sc.nextInt();
+									sc.nextLine();
+									if (pending_option > cancel_application.size()) {
+										System.out.println("Invalid option");
+									} else {
+										int index = pending_option - 1;
+										admindaoimpl.adminCancelRequest(cancel_application.get(index));
+									}
+								} else {
+									System.out.println("No pending applications");
+								}
+								break;
+								
+							case 6:
+								// LOGOUT
 								break admin_loop;
 
 							default:
