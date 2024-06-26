@@ -354,12 +354,9 @@ public class WellnessAssurance {
 														.getPolicy_id();
 														policydaoimpl.deletePolicy(policy_delete_id);
 													
-													// 4. Add Policy
-													case 3:
-														break;
 
 													// 3. Logout
-													case 4:
+													case 3:
 														break admin_loop;
 
 													default:
@@ -378,8 +375,13 @@ public class WellnessAssurance {
 												subcategorydaoimpl.deleteSubCategory(sub_category_id);
 												// 3. Delete Subcategory
 												break;
-
-											case 4:
+												
+											
+											case 4: 
+												// Add Policy
+												break;
+												
+											case 5:
 												break admin_loop;
 
 											default:
