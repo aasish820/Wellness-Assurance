@@ -401,6 +401,7 @@ public class WellnessAssurance {
 									
 									// Add Subcategory
 									case 4:
+										subcategorydaoimpl.addSubcategory(category_id);
 										break;
 
 									// LOGOUT
