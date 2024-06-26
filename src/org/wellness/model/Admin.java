@@ -1,7 +1,7 @@
 package org.wellness.model;
 
 public class Admin {
-
+	
 	private String admin_id;
 	private String fullName;
 	private String address;
@@ -38,6 +38,8 @@ public class Admin {
 	}
 
 	public void setFullName(String fullName) {
+		if(fullName.equals(null))
+			System.out.println("this is required");
 		this.fullName = fullName;
 	}
 
@@ -54,6 +56,9 @@ public class Admin {
 	}
 
 	public void setPh_num(String ph_num) {
+		if(ph_num.length()!=10) {
+			System.out.println("Mobile number shoud be 10 digit");
+		}
 		this.ph_num = ph_num;
 	}
 
@@ -62,6 +67,8 @@ public class Admin {
 	}
 
 	public void setUsername(String username) {
+		if(username.length()==0)
+			System.out.println("User Name can't be null");
 		this.username = username;
 	}
 
