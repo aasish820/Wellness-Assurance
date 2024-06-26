@@ -402,6 +402,7 @@ public class WellnessAssurance {
 												
 											
 											case 4: 
+												 policydaoimpl.addPolicy(category_id);
 												// Add Policy
 												break;
 											
