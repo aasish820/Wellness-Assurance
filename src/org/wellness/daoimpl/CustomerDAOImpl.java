@@ -201,7 +201,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 				int age = sc.nextInt();
 				sc.nextLine();
 				customer.setAge(age);
-				System.out.println("Name has been updated");
+				System.out.println("Age has been updated");
 				break;
 			case 4:
 				System.out.println("Enter new phone number: ");
@@ -226,8 +226,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void cancelRequest(Customer customer) {
-		customer.setCancel(true);
-		System.out.println("Cancel request has been sent");
+		if(customer.getPolicy_id() != null) {
+			customer.setCancel(true);
+			System.out.println("Cancel request has been sent");	
+		} else {
+			System.out.println("No policy to cancel");
+		}
+		
 	}
 
 	@Override

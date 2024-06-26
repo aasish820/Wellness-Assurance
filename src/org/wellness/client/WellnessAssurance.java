@@ -106,7 +106,7 @@ public class WellnessAssurance {
 												.getSub_catogory_id();
 										ArrayList<Policy> policy_list = policydaoimpl
 												.getPolicyBySubCategoryID(apply_sub_category_id);
-										if (sub_category_list.size() < 1) {
+										if (policy_list.size() < 1) {
 											System.out.println("Policy has not been added");
 											break;
 										} else {

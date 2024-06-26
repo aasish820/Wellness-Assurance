@@ -27,9 +27,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 			
 			Category category_obj = new Category(category_id, category_type);
 			
-			ArrayList<String> validate = validateCategory(category);
+			ArrayList<String> validate = validateCategory(category_obj);
 			if (validate.size() < 1) {
-				boolean result = category.add(category);
+				boolean result = category.add(category_obj);
 
 				if (result == true) {
 
@@ -48,14 +48,14 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 	}
 	
-	private ArrayList<String> validateCategory(Category category) {
+	private ArrayList<String> validateCategory(Category new_category_obj) {
 		ArrayList<String> msg = new ArrayList<String>();
 
-		if (category.getCategory_id().length() < 1 || category.getCategory_id().length() > 10) {
+		if (new_category_obj.getCategory_id().length() < 1 || new_category_obj.getCategory_id().length() > 10) {
 			msg.add("Category ID is required and has to be between 1 and 10 characters");
 		}
 
-		if (category.getInc_type().length() < 1) {
+		if (new_category_obj.getInc_type().length() < 1) {
 			msg.add("Insurance Type cannot be empty");
 		}
 

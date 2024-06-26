@@ -34,9 +34,9 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 		Subcategory subcategory_obj = new Subcategory(sub_catogory_id, category_id, sub_Catogory_type); 
 		
-		ArrayList<String> validate = validateSubcategory(subcategory);
+		ArrayList<String> validate = validateSubcategory(subcategory_obj);
 		if (validate.size() < 1) {
-			boolean result = subcategory.add(subcategory);
+			boolean result = subcategory.add(subcategory_obj);
 
 			if (result == true) {
 
@@ -50,11 +50,11 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 			for (int i = 0; i < validate.size(); i++) {
 				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
 			}
-			addSubcategory();
+			String result = addSubcategory(category_id);
 		}	
 		
-//		String sub_id = subcategory_obj.getSub_catogory_id();
-//		return sub_id;
+		String sub_id = subcategory_obj.getSub_catogory_id();
+		return sub_id;
 		
 	}
 	

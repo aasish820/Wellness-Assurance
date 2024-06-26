@@ -125,6 +125,8 @@ public class AdminDAOImpl implements AdminDAO {
 	public void adminCancelRequest(Customer customer) {
 		customer.setPolicy_id(null);
 		customer.setCancel(false);
+		customer.setAccepted(false);
+		customer.setApplied(false);
 		System.out.println("Policy cancel request accepted");	
 	}
 }
