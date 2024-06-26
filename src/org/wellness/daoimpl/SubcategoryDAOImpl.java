@@ -3,6 +3,7 @@ package org.wellness.daoimpl;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.wellness.dao.SubcategoryDAO;
+import org.wellness.model.Category;
 import org.wellness.model.Subcategory;
 
 public class SubcategoryDAOImpl implements SubcategoryDAO {
@@ -32,12 +33,43 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		String sub_Catogory_type = sc.nextLine();
 		
 		Subcategory subcategory_obj = new Subcategory(sub_catogory_id, category_id, sub_Catogory_type); 
-		subcategory.add(subcategory_obj);
-		System.out.println("Sub category Added Successfully");
 		
-		String sub_id = subcategory_obj.getSub_catogory_id();
-		return sub_id;
+		ArrayList<String> validate = validateSubcategory(subcategory);
+		if (validate.size() < 1) {
+			boolean result = subcategory.add(subcategory);
+
+			if (result == true) {
+
+				System.out.println("New Category Registered Successfully");
+			} else {
+
+				System.out.println("Failed to add new category. Please Try Again");
+			}
+		} else {
+			System.out.println("Addition failed");
+			for (int i = 0; i < validate.size(); i++) {
+				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
+			}
+			addSubcategory();
+		}	
 		
+//		String sub_id = subcategory_obj.getSub_catogory_id();
+//		return sub_id;
+		
+	}
+	
+	private ArrayList<String> validateSubcategory(Subcategory subcategory) {
+		ArrayList<String> msg = new ArrayList<String>();
+
+		if (subcategory.getSub_catogory_id().length() < 1 || subcategory.getSub_catogory_id().length() > 10) {
+			msg.add("Subcategory ID is required and has to be between 1 and 10 characters");
+		}
+
+		if (subcategory.getSub_Catogory_type().length() < 1) {
+			msg.add("Subcategory Type cannot be empty");
+		}
+
+		return msg;
 	}
 	
 	@Override

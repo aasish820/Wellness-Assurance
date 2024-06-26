@@ -9,9 +9,9 @@ import org.wellness.model.Policy;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
-	//Customer customer = new Customer();
+	// Customer customer = new Customer();
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
-	
+
 	@Override
 	public ArrayList<Customer> getAllCustomer() {
 		return addCustomer;
@@ -35,7 +35,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		System.out.println("Enter Phone Number: ");
 		String ph_num = sc.nextLine();
-		
+
 		System.out.println("Enter Username: ");
 		String username = sc.nextLine();
 
@@ -44,9 +44,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		System.out.println("Enter Email: ");
 		String email = sc.nextLine();
-		
+
 		Customer customer = new Customer(customer_id, fullName, address, age, ph_num, username, password, email);
-		
+
 		ArrayList<String> validate = validateCustomer(customer);
 		if (validate.size() < 1) {
 			boolean result = addCustomer.add(customer);
@@ -60,7 +60,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			}
 		} else {
 			System.out.println("Registration failed");
-			for(int i = 0; i < validate.size(); i++) {
+			for (int i = 0; i < validate.size(); i++) {
 				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
 			}
 			registerCustomer();
@@ -69,12 +69,36 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	private ArrayList<String> validateCustomer(Customer customer) {
 		ArrayList<String> msg = new ArrayList<String>();
-		if(customer.getAge() < 16 || customer.getAge() > 80) {
+
+		if (customer.getCustomer_id().length() < 1 || customer.getCustomer_id().length() > 10) {
+			msg.add("Customer ID is required and has to be between 1 and 10 characters");
+		}
+
+		if (customer.getFullName().length() < 1) {
+			msg.add("Name cannot be empty");
+		}
+
+		if (customer.getAddress().length() < 1) {
+			msg.add("Address is required");
+		}
+		if (customer.getAge() < 16 || customer.getAge() > 80) {
 			msg.add("Age must be between 16 and 80");
 		}
+
+		if (customer.getPh_num().length() < 1) {
+			msg.add("Phone number cannot be empty");
+		}
+
+		if (customer.getUsername().length() < 1) {
+			msg.add("Username cannot be empty");
+		}
+
+		if (customer.getPassword().length() < 1 || customer.getPassword().length() < 8) {
+			msg.add("Password cannot be empty and has to be at least 8 characters");
+		}
 		
-		if(customer.getFullName().length() < 1) {
-			msg.add("Name cannot be empty");
+		if (customer.getEmail().length() < 1) {
+			msg.add("Email cannot be empty");
 		}
 		return msg;
 	}
@@ -197,7 +221,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 				System.out.println("Invalid option");
 				break;
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -205,7 +229,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		customer.setCancel(true);
 		System.out.println("Cancel request has been sent");
 	}
-	
+
 	@Override
 	public ArrayList<Customer> getCancelRequests() {
 		ArrayList<Customer> pendinglist = new ArrayList<Customer>();
@@ -217,6 +241,5 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		return pendinglist;
 	}
-
 
 }

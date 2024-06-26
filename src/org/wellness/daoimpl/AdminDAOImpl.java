@@ -30,11 +30,23 @@ public class AdminDAOImpl implements AdminDAO {
 		String email = sc.nextLine();
 
 		Admin admin = new Admin(admin_id, name, address, ph_num, username, password, email);
-		boolean result = addAdmin.add(admin);
-		if (result == true) {
-			System.out.println("Admin register successfully");
+		ArrayList<String> validate = validateAdmin(admin);
+		if (validate.size() < 1) {
+			boolean result = addAdmin.add(admin);
+
+			if (result == true) {
+
+				System.out.println("New Admin Registered Successfully");
+			} else {
+
+				System.out.println("Admin Registration Failed. Please Try Again");
+			}
 		} else {
-			System.out.println("Admin couldn't register. Please try again");
+			System.out.println("Registration failed");
+			for (int i = 0; i < validate.size(); i++) {
+				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
+			}
+			registerAdmin();
 		}
 
 	}
@@ -66,6 +78,39 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 		}
 		System.out.println("Password could not be changed. Please try again!!");
+	}
+	
+	private ArrayList<String> validateAdmin(Admin admin) {
+		ArrayList<String> msg = new ArrayList<String>();
+
+		if (admin.getAdmin_id().length() < 1 || admin.getAdmin_id().length() > 10) {
+			msg.add("Admin ID is required and has to be between 1 and 10 characters");
+		}
+
+		if (admin.getFullName().length() < 1) {
+			msg.add("Name cannot be empty");
+		}
+
+		if (admin.getAddress().length() < 1) {
+			msg.add("Address is required");
+		}
+
+		if (admin.getPh_num().length() < 1) {
+			msg.add("Phone number cannot be empty");
+		}
+
+		if (admin.getUsername().length() < 1) {
+			msg.add("Username cannot be empty");
+		}
+
+		if (admin.getPassword().length() < 1 || admin.getPassword().length() < 8) {
+			msg.add("Password cannot be empty and has to be at least 8 characters");
+		}
+		
+		if (admin.getEmail().length() < 1) {
+			msg.add("Email cannot be empty");
+		}
+		return msg;
 	}
 	
 	@Override
