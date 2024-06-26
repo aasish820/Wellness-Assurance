@@ -9,6 +9,7 @@ import org.wellness.model.Policy;
 
 public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
+	//Customer customer = new Customer();
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
 
 	@Override
