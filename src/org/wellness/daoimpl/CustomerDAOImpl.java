@@ -11,7 +11,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	Scanner sc = new Scanner(System.in);
 	//Customer customer = new Customer();
 	ArrayList<Customer> addCustomer = new ArrayList<Customer>();
-
+	
 	@Override
 	public ArrayList<Customer> getAllCustomer() {
 		return addCustomer;
@@ -44,19 +44,39 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		System.out.println("Enter Email: ");
 		String email = sc.nextLine();
-
+		
 		Customer customer = new Customer(customer_id, fullName, address, age, ph_num, username, password, email);
+		
+		ArrayList<String> validate = validateCustomer(customer);
+		if (validate.size() < 1) {
+			boolean result = addCustomer.add(customer);
 
-		boolean result = addCustomer.add(customer);
+			if (result == true) {
 
-		if (result == true) {
+				System.out.println("New Customer Registered Successfully");
+			} else {
 
-			System.out.println("New Customer Registered Successfully");
+				System.out.println("Customer Registration Failed. Please Try Again");
+			}
 		} else {
-
-			System.out.println("Customer Registration Failed. Please Try Again");
+			System.out.println("Registration failed");
+			for(int i = 0; i < validate.size(); i++) {
+				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
+			}
+			registerCustomer();
 		}
+	}
 
+	private ArrayList<String> validateCustomer(Customer customer) {
+		ArrayList<String> msg = new ArrayList<String>();
+		if(customer.getAge() < 16 || customer.getAge() > 80) {
+			msg.add("Age must be between 16 and 80");
+		}
+		
+		if(customer.getFullName().length() < 1) {
+			msg.add("Name cannot be empty");
+		}
+		return msg;
 	}
 
 	@Override
@@ -99,14 +119,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 			}
 		}
 		return pendinglist;
-	}
-
-	@Override
-	public void acceptApplication(Customer customer) {
-		customer.setAccepted(true);
-		System.out.println("Application has been accepted");
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -188,6 +200,23 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}		
 	}
 
+	@Override
+	public void cancelRequest(Customer customer) {
+		customer.setCancel(true);
+		System.out.println("Cancel request has been sent");
+	}
 	
+	@Override
+	public ArrayList<Customer> getCancelRequests() {
+		ArrayList<Customer> pendinglist = new ArrayList<Customer>();
+		for (int i = 0; i < addCustomer.size(); i++) {
+			Customer storedCustDetails = addCustomer.get(i);
+			if (storedCustDetails.isCancel() == true) {
+				pendinglist.add(addCustomer.get(i));
+			}
+		}
+		return pendinglist;
+	}
+
 
 }

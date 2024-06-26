@@ -13,6 +13,8 @@ public class Customer {
 	private String policy_id;
 	private boolean applied;
 	private boolean accepted;
+	private boolean cancel;
+
 
 	public Customer(String customer_id, String fullName, String address, int age, String ph_num, String username,
 			String password, String email) {
@@ -42,6 +44,14 @@ public class Customer {
 
 	public void setAccepted(boolean accepted) {
 		this.accepted = accepted;
+	}
+	
+	public boolean isCancel() {
+		return cancel;
+	}
+
+	public void setCancel(boolean cancel) {
+		this.cancel = cancel;
 	}
 
 	public Customer() {

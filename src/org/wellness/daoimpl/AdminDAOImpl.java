@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 import org.wellness.dao.AdminDAO;
 import org.wellness.model.Admin;
+import org.wellness.model.Customer;
 
 public class AdminDAOImpl implements AdminDAO {
 
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Admin> addAdmin = new ArrayList<Admin>();
-
+	
 	@Override
 	public void registerAdmin() {
 		System.out.println("Enter Admin ID: ");
@@ -65,5 +66,20 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 		}
 		System.out.println("Password could not be changed. Please try again!!");
+	}
+	
+	@Override
+	public void acceptApplication(Customer customer) {
+		customer.setAccepted(true);
+		System.out.println("Application has been accepted");
+		// TODO Auto-generated method stub
+
+	}
+	
+	@Override
+	public void adminCancelRequest(Customer customer) {
+		customer.setPolicy_id(null);
+		customer.setCancel(false);
+		System.out.println("Policy cancel request accepted");	
 	}
 }
