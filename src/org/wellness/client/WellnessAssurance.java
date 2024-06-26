@@ -259,7 +259,8 @@ public class WellnessAssurance {
 									System.out.println("XX      1.View Sub Category     XX");
 									System.out.println("XX      2.Edit Category         XX");
 									System.out.println("XX      3.Delete Category       XX");
-									System.out.println("XX      4.Logout                XX");
+									System.out.println("XX      4.Add Subcategory       XX");
+									System.out.println("XX      5.Logout                XX");
 									System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 									System.out.print("Enter your choice: ");
@@ -293,7 +294,8 @@ public class WellnessAssurance {
 											System.out.println("XX      1.View Policies         XX");
 											System.out.println("XX      2.Edit Sub Category     XX");
 											System.out.println("XX      3.Delete Sub Category   XX");
-											System.out.println("XX      4.Logout                XX");
+											System.out.println("XX      4.Add Policy            XX");
+											System.out.println("XX      5.Logout                XX");
 											System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 											System.out.print("Enter your choice: ");
@@ -336,23 +338,28 @@ public class WellnessAssurance {
 													System.out.print("Enter your choice: ");
 													int policy_choice = sc.nextInt();
 													sc.nextLine();
-													String policy_id = list_policy.get(policy_choice - 1)
-															.getPolicy_id();
 
 													switch (policy_choice) {
 
 													// 1.Edit Policy
 													case 1:
-														policydaoimpl.updatePolicy(policy_id);
+														String policy_edit_id = list_policy.get(policy_choice - 1)
+														.getPolicy_id();
+														policydaoimpl.updatePolicy(policy_edit_id);
 														break;
 
 													// 2. Delete Policy
 													case 2:
-														policydaoimpl.deletePolicy(policy_id);
+														String policy_delete_id = list_policy.get(policy_choice - 1)
+														.getPolicy_id();
+														policydaoimpl.deletePolicy(policy_delete_id);
+													
+													// 4. Add Policy
+													case 3:
 														break;
 
 													// 3. Logout
-													case 3:
+													case 4:
 														break admin_loop;
 
 													default:
@@ -391,9 +398,13 @@ public class WellnessAssurance {
 									case 3:
 										categorydaoimpl.deleteCategory(category_id);
 										break;
+									
+									// Add Subcategory
+									case 4:
+										break;
 
 									// LOGOUT
-									case 4:
+									case 5:
 										break admin_loop;
 
 									default:
