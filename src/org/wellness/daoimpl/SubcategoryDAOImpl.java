@@ -58,6 +58,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		
 	}
 	
+
 	private ArrayList<String> validateSubcategory(Subcategory subcategory) {
 		ArrayList<String> msg = new ArrayList<String>();
 

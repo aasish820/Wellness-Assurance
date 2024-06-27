@@ -7,7 +7,7 @@ import org.wellness.model.Policy;
 public interface PolicyDAO {
 	ArrayList<Policy> getPolicyBySubCategoryID(String sub_category_id);
 
-	void addPolicy(String sub_category_id);
+	String addPolicy(String sub_category_id);
 
 	void updatePolicy(String policy_id);
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.wellness.dao.PolicyDAO;
+import org.wellness.model.Category;
 import org.wellness.model.Policy;
 
 public class PolicyDAOImpl implements PolicyDAO {
@@ -24,7 +25,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 	}
 
 	@Override
-	public void addPolicy(String sub_category_id) {
+	public String addPolicy(String sub_category_id) {
 		// TODO Auto-generated method stub
 		System.out.println("Enter Policy ID");
 		String policy_id = sc.nextLine();
@@ -41,9 +42,53 @@ public class PolicyDAOImpl implements PolicyDAO {
 		sc.nextLine();
 		
 		Policy policy_obj = new Policy(policy_id, plan_type, sub_category_id, monthly_premium, coverage, deductable);
-		policy.add(policy_obj);
-		System.out.println("Policy Added Successfully");
+		ArrayList<String> validate = validatePolicy(policy_obj);
+		if (validate.size() < 1) {
+			boolean result = policy.add(policy_obj);
 
+			if (result == true) {
+
+				System.out.println("New Policy Added Successfully");
+			} else {
+
+				System.out.println("Failed to add new policy. Please Try Again");
+			}
+		} else {
+			System.out.println("Addition failed");
+			for (int i = 0; i < validate.size(); i++) {
+				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
+			}
+			String result = addPolicy(sub_category_id);
+			
+		}
+		
+		String pol_id = policy_obj.getSub_category_id();
+		return pol_id;
+
+	}
+	
+	private ArrayList<String> validatePolicy(Policy policy) {
+		ArrayList<String> msg = new ArrayList<String>();
+
+		if (policy.getPolicy_id().length() < 1 || policy.getPolicy_id().length() > 10) {
+			msg.add("Policy ID is required and has to be between 1 and 10 characters");
+		}
+
+		if (policy.getPlan_type().length() < 1) {
+			msg.add("Plan Type cannot be empty");
+		}
+		
+		if (policy.getMonthly_premium().toString().length() < 1) {
+			msg.add("Monthly Premium cannot be empty");
+		}
+		if (policy.getCoverage().toString().length() < 1) {
+			msg.add("Coverage cannot be empty");
+		}
+		if (policy.getDeductable().toString().length() < 1) {
+			msg.add("Plan Type cannot be empty");
+		}
+
+		return msg;
 	}
 	
 	@Override
