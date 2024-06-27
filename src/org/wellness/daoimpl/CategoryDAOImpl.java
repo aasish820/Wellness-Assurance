@@ -52,7 +52,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		ArrayList<String> msg = new ArrayList<String>();
 
 		if (new_category_obj.getCategory_id().length() < 1 || new_category_obj.getCategory_id().length() > 10) {
-			msg.add("Category ID is required and has to be between 1 and 10 characters");
+			msg.add("Category ID has to be between 1 and 10 characters");
 		}
 
 		if (new_category_obj.getInc_type().length() < 1) {

@@ -29,13 +29,41 @@ public class CustomerDAOImpl implements CustomerDAO {
 		System.out.println("Enter Address: ");
 		String address = sc.nextLine();
 
-		System.out.println("Enter Age: ");
-		int age = sc.nextInt();
-		sc.nextLine();
+//		System.out.println("Enter Age: ");
+//		int age = sc.nextInt();
+//		sc.nextLine();
+		int age = 0;
+		boolean validAgeInput = false;
 
-		System.out.println("Enter Phone Number: ");
-		String ph_num = sc.nextLine();
-		
+		while (!validAgeInput) {
+			System.out.println("Enter Age: ");
+			String ageInput = sc.nextLine();
+
+			// Validate if input is numeric
+			if (ageInput.matches("\\d+")) {
+				age = Integer.parseInt(ageInput);
+				validAgeInput = true;
+			} else {
+				System.out.println("Age has to be digits. Please enter a valid age.");
+			}
+		}
+
+//		System.out.println("Enter Phone Number: ");
+//		String ph_num = sc.nextLine();
+		String ph_num = "";
+		boolean validPhone = false;
+		String phoneRegex = "\\d{10}"; // Regular expression for exactly 10 digits
+
+		while (!validPhone) {
+			System.out.println("Enter Phone Number: ");
+			ph_num = sc.nextLine();
+
+			if (ph_num.matches(phoneRegex)) {
+				validPhone = true;
+			} else {
+				System.out.println("Phone number must be exactly 10 digits. Please enter a valid phone number.");
+			}
+		}
 
 		System.out.println("Enter Username: ");
 		String username = sc.nextLine();
@@ -43,8 +71,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 		System.out.println("Enter Password: ");
 		String password = sc.nextLine();
 
-		System.out.println("Enter Email: ");
-		String email = sc.nextLine();
+//		System.out.println("Enter Email: ");
+//		String email = sc.nextLine();
+		String email = "";
+		boolean validEmail = false;
+		String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$"; // Regular expression for email format
+
+		while (!validEmail) {
+			System.out.println("Enter Email: ");
+			email = sc.nextLine();
+
+			if (email.matches(emailRegex)) {
+				validEmail = true;
+			} else {
+				System.out.println("Email format is invalid. Please enter a valid email.");
+			}
+		}
 
 		Customer customer = new Customer(customer_id, fullName, address, age, ph_num, username, password, email);
 
@@ -72,7 +114,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		ArrayList<String> msg = new ArrayList<String>();
 
 		if (customer.getCustomer_id().length() < 1 || customer.getCustomer_id().length() > 10) {
-			msg.add("Customer ID is required and has to be between 1 and 10 characters");
+			msg.add("Customer ID has to be between 1 and 10 characters");
 		}
 
 		if (customer.getFullName().length() < 1) {
@@ -95,9 +137,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 
 		if (customer.getPassword().length() < 1 || customer.getPassword().length() < 8) {
-			msg.add("Password cannot be empty and has to be at least 8 characters");
+			msg.add("Password has to be at least 8 characters");
 		}
-		
+
 		if (customer.getEmail().length() < 1) {
 			msg.add("Email cannot be empty");
 		}
@@ -227,13 +269,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public void cancelRequest(Customer customer) {
-		if(customer.getPolicy_id() != null) {
+		if (customer.getPolicy_id() != null) {
 			customer.setCancel(true);
-			System.out.println("Cancel request has been sent");	
+			System.out.println("Cancel request has been sent");
 		} else {
 			System.out.println("No policy to cancel");
 		}
-		
+
 	}
 
 	@Override

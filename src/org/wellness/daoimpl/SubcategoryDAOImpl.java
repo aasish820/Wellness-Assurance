@@ -63,7 +63,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 		ArrayList<String> msg = new ArrayList<String>();
 
 		if (subcategory.getSub_catogory_id().length() < 1 || subcategory.getSub_catogory_id().length() > 10) {
-			msg.add("Subcategory ID is required and has to be between 1 and 10 characters");
+			msg.add("Subcategory ID has to be between 1 and 10 characters");
 		}
 
 		if (subcategory.getSub_Catogory_type().length() < 1) {
