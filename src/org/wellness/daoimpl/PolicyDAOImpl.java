@@ -65,7 +65,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
 			}
 			String result = addPolicy(sub_category_id);
-			
+			System.out.println(result);
 		}
 		
 		String pol_id = policy_obj.getSub_category_id();

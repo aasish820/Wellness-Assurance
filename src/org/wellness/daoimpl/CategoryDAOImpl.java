@@ -2,10 +2,8 @@ package org.wellness.daoimpl;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import org.wellness.dao.CategoryDAO;
 import org.wellness.model.Category;
-import org.wellness.model.Customer;
 
 public class CategoryDAOImpl implements CategoryDAO {
 	

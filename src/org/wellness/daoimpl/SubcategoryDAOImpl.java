@@ -3,7 +3,6 @@ package org.wellness.daoimpl;
 import java.util.ArrayList;
 import java.util.Scanner;
 import org.wellness.dao.SubcategoryDAO;
-import org.wellness.model.Category;
 import org.wellness.model.Subcategory;
 
 public class SubcategoryDAOImpl implements SubcategoryDAO {
@@ -51,6 +50,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
 			}
 			String result = addSubcategory(category_id);
+			System.out.println(result);
 			
 		}	
 		
