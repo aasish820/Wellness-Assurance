@@ -691,7 +691,9 @@ public class WellnessAssurance {
 				System.out.println("Invalid option");
 				break;
 			}
+			sc.close();
 		}
+		
 	}
 
 }

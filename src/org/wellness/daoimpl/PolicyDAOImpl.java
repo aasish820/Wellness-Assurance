@@ -3,9 +3,7 @@ package org.wellness.daoimpl;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import org.wellness.dao.PolicyDAO;
-import org.wellness.model.Category;
 import org.wellness.model.Policy;
 
 public class PolicyDAOImpl implements PolicyDAO {

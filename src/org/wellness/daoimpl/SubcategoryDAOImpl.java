@@ -51,6 +51,7 @@ public class SubcategoryDAOImpl implements SubcategoryDAO {
 				System.out.println("!!!!!   " + validate.get(i) + "   !!!!!!");
 			}
 			String result = addSubcategory(category_id);
+			
 		}	
 		
 		String sub_id = subcategory_obj.getSub_catogory_id();
